@@ -2,7 +2,7 @@
 <html>
 
 <head>
-		<link rel="stylesheet" type="text/css" href="content/css/style.css">
+		<link rel="stylesheet" type="text/css" href="content/css/notesStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">

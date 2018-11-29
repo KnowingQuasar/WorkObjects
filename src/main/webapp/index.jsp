@@ -19,7 +19,7 @@
     <div class="dropdown">
         <button class="dropButton">Groups</button>
         <div class="dropContent">
-            <a href="#">Group 1</a>
+            <a href="notes.jsp">Group 1</a>
             <a href="#">Group 2</a>
             <a href="#">Overflow T e s t asdf asdf asdf</a>
             <a href="#" class="newGroupButton">New Group</a>
