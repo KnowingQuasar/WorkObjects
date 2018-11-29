@@ -1,0 +1,16 @@
+azureSettings.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+.idea/artifacts
+out/
+target/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/uiDesigner.xml
+.idea/libraries
+*.iml
+.idea/misc.xml
