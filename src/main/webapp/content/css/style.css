@@ -1,0 +1,122 @@
+/*Hex Codes
+	Blue Text: #728aa0			rgba(114, 138, 160, 1)
+	Grey Text: #606060			rgba(96, 96, 96, 1)
+	Dark Background: #1e1e1e	rgba(30, 30, 30, 1)
+	Grey borders: #3e3e3e		rgba(62, 62, 62, 1)
+	green: #57753c				rgba(87, 117, 60, 1)
+	blue: #007bd0				rgba(0, 123, 208, 1)
+*/
+
+body {
+	margin-left: 140px;
+	background-color: #1e1e1e;
+}
+
+.buttonPlus {
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	font-size: 180%;
+	background-color: #666666;
+	position: relative;
+	left: 10px;
+	top: 250px;
+	margin-right: 150px;
+}
+	.buttonPlus:hover {
+		background-color:#555555;
+	}
+
+#top {
+	height: 50px;
+}
+
+#sideBar {
+	margin: auto;
+	width: 300px;
+	position: fixed;
+	left: 20px;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+	.dropdown:hover .dropContent{
+		display: block;
+	}
+
+.dropButton {
+	width: 100px;
+	height: 30px;
+	background-color: #666666;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.dropContent {
+	display: none;
+	position: absolute;
+	background-color: #3e3e3e;
+	min-width: 100px;
+}
+	.dropContent a {
+		color: white;
+		padding-left: 12px;
+		padding-top: 6px;
+		text-decoration: none;
+		display: block;
+		height: 20px;
+		overflow: hidden;
+	}
+		.dropContent a:hover {
+			background-color: #007bd0;
+		}
+
+#lock {
+	position: relative;
+	left: 250px;
+	top: 130px;
+	opacity: .6;
+	z-index: 1;
+}
+
+#viewButton {
+	position: relative;
+	left: 160px;
+	top: 150px;
+}
+
+#editButton {
+	position: relative;
+	left: 170px;
+	top: 150px;
+}
+
+.workItem {
+	width: 300px;
+	height: 200px;
+	background-color: #3e3e3e;
+	display: inline-block;
+	border: 4px outset;
+	border-radius: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	border-color: #ffffff;
+}
+	.workItem:hover {
+		background-color: #4f4f4f;
+	}
+
+.buttonDark {
+	background-color: #666666;
+	border: 2px outset;
+	border-radius: 3px;
+	color: white;
+}
+	.buttonDark:hover {
+		background-color: #555555;
+	}
+
