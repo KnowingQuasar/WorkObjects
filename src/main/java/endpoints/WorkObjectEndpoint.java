@@ -8,21 +8,20 @@ import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
 import messages.*;
-import model.*;
 
 @ServerEndpoint(value = "/game")
-public class GameEndpoint {
+public class WorkObjectEndpoint {
     // Per client vars:
     // Session info (client IP, etc)
     private Session session;
 
     // Shared vars:
     // Set of all connected clients
-    private static final Set<GameEndpoint> gameEndpoints = new CopyOnWriteArraySet<>();
+    private static final Set<WorkObjectEndpoint> workObjectEndpoints = new CopyOnWriteArraySet<>();
 
     // Send msg to both clients
     private static void broadcast(Message msg) {
-        for (GameEndpoint endpoint : gameEndpoints) {
+        for (WorkObjectEndpoint endpoint : workObjectEndpoints) {
             try {
                 endpoint.session.getBasicRemote()
                         .sendObject(msg);
