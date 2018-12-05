@@ -38,3 +38,8 @@ body {
     position: relative;
     left: 270px;
 }
+
+#saveAndQuit a{
+    text-decoration: none;
+    color: black;
+}

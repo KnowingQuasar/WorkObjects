@@ -20,7 +20,7 @@
 <br>
 
     <button id="save">Save</button>
-    <button id="saveAndQuit">Save and Quit</button>
+<button id="saveAndQuit"><a href="index.jsp">Save and Quit</a></button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="content/js/game.js"></script>
