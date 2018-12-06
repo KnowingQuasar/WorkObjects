@@ -76,39 +76,44 @@ body {
 		}
 
 #lock {
-	position: relative;
-	left: 250px;
-	top: 130px;
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
 	opacity: .6;
 	z-index: 1;
 }
 
 #viewButton {
-	position: relative;
-	left: 160px;
-	top: 150px;
+	position: absolute;
+	left: 200px;
+	bottom: 15px;
 }
 
 #editButton {
-	position: relative;
-	left: 170px;
-	top: 150px;
+	position: absolute;
+	left: 250px;
+	bottom: 15px;
 }
 
 .workItem {
+	padding: 0px 20px 0px 20px;
 	width: 300px;
 	height: 200px;
 	background-color: #3e3e3e;
 	display: inline-block;
-	border: 4px outset;
+	border: 4px outset #ffffff;
 	border-radius: 10px;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 20px;
-	border-color: #ffffff;
+	position: relative;
 }
 	.workItem:hover {
 		background-color: #4f4f4f;
+	}
+	.workItem h2{
+		color: #ffffff;
+		overflow: hidden;
 	}
 
 .buttonDark {
@@ -121,3 +126,41 @@ body {
 		background-color: #555555;
 	}
 
+p {
+	color: #0af;
+	margin: 0px;
+}
+
+#titleText{
+	font-size: 24px;
+}
+
+#contentText{
+	font-size: 16px;
+}
+
+#titleDiv{
+	position: absolute;
+	overflow: hidden;
+	width: 308px;
+	height: 26px;
+	top: 15px;
+}
+#titleDiv:hover{
+	overflow: auto;
+}
+#titleDiv p {
+	 font-weight: bold;
+ }
+
+#contentDiv{
+	position: absolute;
+	overflow: auto;
+	top: 45px;
+	width: 308px;
+	height: 105px;
+	box-shadow: 0px -12px 21px -7px #0af inset;
+}
+#contentDiv p{
+	padding: 0px 5px 0px 5px;
+}
