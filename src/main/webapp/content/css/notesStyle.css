@@ -33,13 +33,34 @@ body {
     margin: 0 auto;
     transform: translateY(-150px);
 }
-
-.saveButton{
-    position: relative;
-    left: 270px;
+#contentText{
+    color: white;
 }
 
-#saveAndQuit a{
+#titleText{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#exit{
+    font-size: 16px;
+    position: fixed;
+    left: 75px;
+    bottom: 300px;
+    width: 75px;
+    height: 35px;
+    background-color: #666666;
+    border-radius: 5px;
+
+}
+#exit:hover{
+    background-color: #777777;
+}
+
+#exit a{
     text-decoration: none;
-    color: black;
+    color: white;
+
 }
