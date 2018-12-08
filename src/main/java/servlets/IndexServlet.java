@@ -38,7 +38,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String grp = request.getParameter("group");
-        IndexViewModel viewModel = new IndexViewModel(grp == null ? "default" : grp);
+        IndexViewModel viewModel = new IndexViewModel(grp == null ? "$,." : grp);
         request.setAttribute("viewModel", viewModel);
         response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
         response.setHeader("Pragma", "no-cache");
