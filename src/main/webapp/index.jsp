@@ -11,12 +11,9 @@
             $("body").append(workItem);
         }
 
-        /*$.ajax({
-            type: "POST",
-            url: "localhost:8080",
-            success: appendWorkItem(),
-            dataType: dataType
-        });*/
+        function sendCreate() {
+            $.post("/index", appendWorkItem());
+        }
     </script>
 </head>
 
@@ -32,7 +29,7 @@
             <a href="#" class="newGroupButton">New Group</a>
         </div>
     </div>
-    <button class="buttonPlus" onclick="appendWorkItem()">+</button>
+    <button class="buttonPlus" onclick="sendCreate()">+</button>
 </div>
 </body>
 </html>
