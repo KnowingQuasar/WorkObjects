@@ -9,8 +9,5 @@
         <module name="WorkObjects" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="WorkObjects" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
