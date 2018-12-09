@@ -40,12 +40,6 @@
         function sendCreate() {
             $.post("/index", appendWorkItem());
         }
-        function sendEdit(){
-            $.post("/notes.jsp", useUnlocked()) ;
-        }
-        function sendView() {
-            $.post("/notes.jsp", useLocked());
-        }
     </script>
 </head>
 
@@ -85,8 +79,15 @@
     <%
         }
     %>
-    <button type="submit" formmethod="get" class="buttonDark" id="viewButton" onclick="sendView()">View</button>
-    <button type="submit" formmethod="get" class="buttonDark" id="editButton" onclick="sendEdit()">edit</button></span>
+    <form method="get">
+                <input type="submitView" value="View"
+                       name="SubmitView" id="newView" />
+            </form>
+    <form method="get">
+                <input type="submitEdit" value="Edit"
+                       name="SubmitEdit" id="newEdit" />
+            </form>
+    </span>
 <%
     }
 %>
