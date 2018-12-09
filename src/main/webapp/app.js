@@ -1,5 +1,3 @@
-// IIFE keeps our variables private
-// and gets executed immediately!
 (function () {
     var editable_elements = document.querySelectorAll("[contentEditable=true]");
     for(var i=0; i<editable_elements.length; i++)

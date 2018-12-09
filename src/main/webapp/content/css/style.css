@@ -81,6 +81,8 @@ body {
 	bottom: 15px;
 	opacity: .6;
 	z-index: 1;
+	width: 32px;
+	height: 32px;
 }
 
 #viewButton {
@@ -163,4 +165,8 @@ p {
 }
 #contentDiv p{
 	padding: 0px 5px 0px 5px;
+}
+
+form {
+	background: none;
 }

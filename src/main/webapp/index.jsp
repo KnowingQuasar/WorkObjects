@@ -37,7 +37,11 @@
             <%
                 }
             %>
-            <a href="#" class="newGroupButton">New Group</a>
+            <!--<a href="#" class="newGroupButton">New Group</a>-->
+            <form method="get">
+                <input type="submit" value="New Group"
+                       name="Submit" id="newGroup" />
+            </form>
         </div>
     </div>
     <button class="buttonPlus" onclick="sendCreate()">+</button>
@@ -54,12 +58,15 @@
     <%
         }
     %>
-    <button type="submit" formmethod="post" class="buttonDark" id="viewButton">View</button><button type="submit"
+    <button type="submit" formmethod="post" class="buttonDark" id="viewButton" href="notes.jsp">View</button><button type="submit"
                                                                                                     formmethod="post"
                                                                                                     class="buttonDark"
-                                                                                                    id="editButton">edit</button></span>
+                                                                                                    id="editButton" onclick="closingCode();"
+                                                                                                    href="notes.jsp">edit</button></span>
 <%
     }
 %>
 </body>
 </html>
+<script src="app.js"></script>
+<script scr="appUnlocked.js"></script>
