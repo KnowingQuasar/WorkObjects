@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class IndexServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
+        String newGroup = request.getParameter("newGroup");
+        String sub = request.getParameter("Submit");
+        System.out.println(newGroup + " " + sub);
         Connection con = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -34,6 +37,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
             System.out.println("Could not execute query");
             se.printStackTrace();
         }
+
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {

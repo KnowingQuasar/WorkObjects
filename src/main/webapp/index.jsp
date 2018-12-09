@@ -12,12 +12,39 @@
         function appendWorkItem() {
             var workItem = "<span class=\"workItem\"><div id=\"titleDiv\"><p id=\"titleText\">Title</p></div><div id=\"contentDiv\"><p id=\"contentText\"></p></div>" +
                 "<button type=\"submit\" formmethod=\"post\" class=\"buttonDark\" " +
-                "id=\"viewButton\">view</button><button type=\"submit\" formmethod=\"post\" class=\"buttonDark\" id=\"editButton\">edit</button></span >"
+                "id=\"viewButton\">view</button><button type=\"submit\" formmethod=\"post\" class=\"buttonDark\" id=\"editButton\">edit</button></span >";
             $("body").append(workItem);
+        }
+
+        function useLocked()
+        {
+            (function () {
+                var editable_elements = document.querySelectorAll("[contentEditable=true]");
+                for(var i=0; i<editable_elements.length; i++)
+                    editable_elements[i].setAttribute("contentEditable", false);
+            })();
+        }
+        function useUnlocked()
+        {
+            window.onbeforeunload = closingCode;
+            function closingCode(){
+                (function () {
+                    var editable_elements = document.querySelectorAll("[contentEditable=true]");
+                    for(var i=0; i<editable_elements.length; i++)
+                        editable_elements[i].setAttribute("contentEditable", true);
+                })();
+                return null;
+            }
         }
 
         function sendCreate() {
             $.post("/index", appendWorkItem());
+        }
+        function sendEdit(){
+            $.post("/notes.jsp", useUnlocked()) ;
+        }
+        function sendView() {
+            $.post("/notes.jsp", useLocked());
         }
     </script>
 </head>
@@ -32,7 +59,7 @@
                 for (String grp :
                         ((IndexViewModel) request.getAttribute("viewModel")).getGroups()) {
             %>
-            <a href="#"><%=grp%>
+            <a href="#" ><%=grp%>
             </a>
             <%
                 }
@@ -58,11 +85,8 @@
     <%
         }
     %>
-    <button type="submit" formmethod="post" class="buttonDark" id="viewButton" href="notes.jsp">View</button><button type="submit"
-                                                                                                    formmethod="post"
-                                                                                                    class="buttonDark"
-                                                                                                    id="editButton" onclick="closingCode();"
-                                                                                                    href="notes.jsp">edit</button></span>
+    <button type="submit" formmethod="get" class="buttonDark" id="viewButton" onclick="sendView()">View</button>
+    <button type="submit" formmethod="get" class="buttonDark" id="editButton" onclick="sendEdit()">edit</button></span>
 <%
     }
 %>
