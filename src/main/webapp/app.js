@@ -1,5 +1,1 @@
-(function () {
-    var editable_elements = document.querySelectorAll("[contentEditable=true]");
-    for(var i=0; i<editable_elements.length; i++)
-        editable_elements[i].setAttribute("contentEditable", false);
-})();
+var ws = new WebSocket((document.location.protocol === "http:" ? "ws://" : "wss://") + document.location.host + "/docws");

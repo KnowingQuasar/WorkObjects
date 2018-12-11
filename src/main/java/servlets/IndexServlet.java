@@ -3,30 +3,28 @@ package servlets;
 import model.IndexViewModel;
 import model.WorkObject;
 
+import javax.servlet.ServletException;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class IndexServlet extends javax.servlet.http.HttpServlet {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
 
+public class IndexServlet extends javax.servlet.http.HttpServlet {
+    private void doSql(String queryString) {
         Connection con = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost;user=sa;password=1234!@#$qwerQWER;database=WorkObjects";
+            String connectionUrl = "jdbc:sqlserver://localhost;user=sa;password=1234!@#$qwerQWER;database=WorkObjects;";
             con = DriverManager.getConnection(connectionUrl);
-        } catch (ClassNotFoundException ce)
-        {
+        } catch (ClassNotFoundException ce) {
             System.out.println("Error: could not load SQL driver");
             ce.printStackTrace();
-        }
-        catch (SQLException se)
-        {
+        } catch (SQLException se) {
             System.out.println("Error: could not connect to SQL");
             se.printStackTrace();
         }
-        String queryString = "INSERT INTO dbo.wobjs VALUES ('Title', '" + request.getParameter("group") + "', '');";
-        if(con == null)
+        if (con == null)
             return;
         try {
             Statement getQuery = con.createStatement();
@@ -34,19 +32,39 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
         } catch (SQLException se) {
             System.out.println("Could not execute query");
             se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
         }
     }
 
+    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
+        String queryString;
+        queryString = "INSERT INTO dbo.wobjs VALUES ('Title', '" + request.getParameter("group") + "', 'Sample Content', 0);";
+        doSql(queryString);
+    }
+
+    // URL pattern /index.jsp?gid=2
+    // View /view.jsp?tid=1234
+    // Edit /edit.jsp?tid=1234
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String grp = request.getParameter("group");
-        IndexViewModel viewModel = new IndexViewModel(grp == null ? "$,." : grp);
+        String ngrp = request.getParameter("newGroup");
+        String viewGrp = "$,.";
+        if(ngrp != null)
+        {
+            doSql("INSERT INTO dbo.wobjs VALUES ('Title', '" + ngrp + "', 'Sample content', 0);");
+            viewGrp = ngrp;
+        }
+        else if(grp != null)
+            viewGrp = grp;
+        IndexViewModel viewModel = new IndexViewModel(viewGrp);
         request.setAttribute("viewModel", viewModel);
         response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        String sub = request.getParameter("Submit");
-        String view = request.getParameter("SubmitView");
-        String edit = request.getParameter("SubmitEdit");
-        System.out.println("New Group: " + sub + "\nView: " + view + "\nEdit: " + edit);
     }
 }

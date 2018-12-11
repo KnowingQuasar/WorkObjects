@@ -25,7 +25,6 @@ public class IndexViewModel {
     }
 
     public IndexViewModel(String gname) {
-        selectedGrp = gname;
         wobjs = new ArrayList<>();
         groups = new ArrayList<>();
         Connection con;
@@ -75,6 +74,7 @@ public class IndexViewModel {
             System.out.println("Could not execute query");
             se.printStackTrace();
         }
+        selectedGrp = gname;
     }
 
 }
