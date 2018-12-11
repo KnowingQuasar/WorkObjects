@@ -23,6 +23,7 @@ body {
 	left: 10px;
 	top: 250px;
 	margin-right: 150px;
+	outline: none;
 }
 	.buttonPlus:hover {
 		background-color:#555555;

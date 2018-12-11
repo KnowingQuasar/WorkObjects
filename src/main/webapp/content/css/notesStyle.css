@@ -57,7 +57,7 @@ body {
     height: 35px;
     background-color: #666666;
     border-radius: 5px;
-
+    outline: none;
 }
 #exit:hover{
     background-color: #777777;
@@ -81,5 +81,4 @@ input{
     background-color: #1e1e1e;
     color: white;
     border: none;
-
 }
