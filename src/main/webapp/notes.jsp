@@ -21,11 +21,19 @@
     <div class="doc__text-editor hidden">
         <%
             NotesViewModel vm = (NotesViewModel) request.getAttribute("viewModel");
+            if(vm.getTitle() == null)
+            {
+                vm.setTitle("Title");
+            }
+            if(vm.getContent() == null)
+            {
+                vm.setContent("");
+            }
             if (vm.isEdit()) {
         %>
-        <input type="text" id="titleText" value="<%=vm.getTitle()%>" style="color:black">
+        <input type="text" id="titleText" value="<%=vm.getTitle()%>">
         <br>
-        <textarea id="contentText" style="color:black"><%=vm.getContent()%></textarea>
+        <textarea id="contentText"><%=vm.getContent()%></textarea>
         <%
         } else {
         %>

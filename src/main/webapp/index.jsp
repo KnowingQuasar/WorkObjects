@@ -21,7 +21,7 @@
                         "<div id=\"contentDiv\">" +
                             "<p id=\"contentText\">Sample Content</p>" +
                         "</div>" +
-                        "<button type=\"submit\" class=\"buttonDark\" id=\"viewButton\" name=\"action\" value=\"view\">Value</button>" +
+                        "<button type=\"submit\" class=\"buttonDark\" id=\"viewButton\" name=\"action\" value=\"view\">View</button>" +
                         "<button type=\"submit\" class=\"buttonDark\" id=\"editButton\" name=\"action\" value=\"edit\">Edit</button>" +
                     "</form>" +
                 "</span>";

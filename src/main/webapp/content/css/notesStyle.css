@@ -35,15 +35,17 @@ body {
 }
 #contentText{
     color: white;
+    width: 100%;
 }
 
 #titleText{
     color: white;
     font-size: 24px;
     font-weight: bold;
-    margin: 20px;
     height: 20px;
     overflow: hidden;
+    margin: 0 0 20px 0;
+    width: 100%;
 }
 
 #exit{
@@ -65,4 +67,18 @@ body {
     text-decoration: none;
     color: white;
 
+}
+
+textarea{
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
+    min-height: inherit;
+    resize: none;
+}
+
+input{
+    background-color: #1e1e1e;
+    color: white;
+    border: none;
 }
