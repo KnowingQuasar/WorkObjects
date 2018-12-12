@@ -30,7 +30,9 @@ public class IndexViewModel {
         Connection con;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost;user=sa;password=1234!@#$qwerQWER;database=WorkObjects";
+            // localhost
+            // String connectionUrl = "jdbc:sqlserver://localhost;user=sa;password=1234!@#$qwerQWER;database=WorkObjects";
+            String connectionUrl = "jdbc:sqlserver://3750projects.database.windows.net:1433;user=admin3750;password=1234!@#$qwerQWER;database=WorkObjects;";
             con = DriverManager.getConnection(connectionUrl);
         } catch (ClassNotFoundException ce) {
             System.out.println("Error: could not load SQL driver");

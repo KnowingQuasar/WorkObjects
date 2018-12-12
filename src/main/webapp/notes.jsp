@@ -13,19 +13,41 @@
     <title>Notes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        var exitButton = $('#exit');
         var ws = new WebSocket((document.location.protocol === "http:" ? "ws://" : "wss://") + document.location.host +
-            "/docws/<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>/<%=URLEncoder.encode(request.getParameter("wobj"), StandardCharsets.UTF_8.toString())%>?edit=<%=vm.isEdit()%>");
+            "/docws/<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>/<%=URLEncoder.encode(request.getParameter("wobj"), StandardCharsets.UTF_8.toString())%>");
         ws.onmessage = function (ev) {
             var msg = JSON.parse(ev.data);
             switch (msg.action) {
-                case "addText":
+                case "content":
+                    $('#contentText').text(msg.content);
                     break;
             }
         };
+        <%
+        if(vm.isEdit()) {
+        %>
+        setTimeout(sendContent, 5000);
+        function sendContent() {
+            ws.send(JSON.stringify({"action": "content", "content": $('#contentText').val()}));
+            setTimeout(sendContent, 5000);
+        }
 
-        $('#contentText').keypress(function (ev) {
-            ws.send(JSON.stringify({"action": "sendKey", "key": String.fromCharCode(ev.which)}));
+        exitButton.click(function(){
+            ws.send(JSON.stringify({"action": "content", "content": $('#contentText').val()}));
+            ws.close();
+            location.href='/index?group=<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>';
         });
+
+        <%
+        } else {
+        %>
+        exitButton.click(function(){
+            location.href='/index?group=<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>';
+        });
+        <%
+        }
+        %>
     </script>
 </head>
 
@@ -60,12 +82,10 @@
         %>
     </div>
     <button id="exit"
-            onclick="location.href='/index?group=<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>';">
+            onclick="location.href='/index?group=<%=URLEncoder.encode(request.getParameter("group"), StandardCharsets.UTF_8.toString())%>';ws.close();sendContent();">
         Exit
     </button>
 </div>
 <br>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="app.js"></script>
 </body>
 </html>

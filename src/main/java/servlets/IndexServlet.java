@@ -1,5 +1,6 @@
 package servlets;
 
+import endpoints.WorkObjectEndpoint;
 import model.IndexViewModel;
 import model.WorkObject;
 
@@ -12,18 +13,7 @@ import java.util.ArrayList;
 
 public class IndexServlet extends javax.servlet.http.HttpServlet {
     private void doSql(String queryString) {
-        Connection con = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost;user=sa;password=1234!@#$qwerQWER;database=WorkObjects;";
-            con = DriverManager.getConnection(connectionUrl);
-        } catch (ClassNotFoundException ce) {
-            System.out.println("Error: could not load SQL driver");
-            ce.printStackTrace();
-        } catch (SQLException se) {
-            System.out.println("Error: could not connect to SQL");
-            se.printStackTrace();
-        }
+        Connection con = WorkObjectEndpoint.getConnection();
         if (con == null)
             return;
         try {
@@ -43,7 +33,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
         String queryString;
-        queryString = "INSERT INTO dbo.wobjs VALUES ('Title', '" + request.getParameter("group") + "', 'Sample Content', 0);";
+        queryString = "INSERT INTO dbo.wobjs VALUES ('" + request.getParameter("title") + "', '" + request.getParameter("group") + "', 'Sample Content', 0);";
         doSql(queryString);
     }
 

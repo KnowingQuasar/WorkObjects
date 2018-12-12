@@ -24,6 +24,7 @@ body {
 	top: 250px;
 	margin-right: 150px;
 	outline: none;
+	z-index: -1;
 }
 	.buttonPlus:hover {
 		background-color:#555555;
@@ -81,7 +82,6 @@ body {
 	right: 15px;
 	bottom: 15px;
 	opacity: .6;
-	z-index: 1;
 	width: 32px;
 	height: 32px;
 }

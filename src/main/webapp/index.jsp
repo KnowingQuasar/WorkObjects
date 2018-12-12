@@ -9,21 +9,21 @@
     <title>Google Docs Ripoff</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        function appendWorkItem() {
+        function appendWorkItem(newWobj) {
             var grp = "<%=((IndexViewModel)request.getAttribute("viewModel")).getSelectedGrp()%>";
             var workItem =
                 "<span class=\"workItem\">" +
-                    "<form id=\"viewEdit\" method=\"get\" action=\"/doc\">" +
-                        "<input type=\"hidden\" name=\"group\" value=\"" + grp + "\"/>" +
-                        "<div id=\"titleDiv\">" +
-                            "<input type=\"text\" id=\"TitleText\" readonly name=\"wobj\" value=\"Title\"/>" +
-                        "</div>" +
-                        "<div id=\"contentDiv\">" +
-                            "<p id=\"contentText\">Sample Content</p>" +
-                        "</div>" +
-                        "<button type=\"submit\" class=\"buttonDark\" id=\"viewButton\" name=\"action\" value=\"view\">View</button>" +
-                        "<button type=\"submit\" class=\"buttonDark\" id=\"editButton\" name=\"action\" value=\"edit\">Edit</button>" +
-                    "</form>" +
+                "<form id=\"viewEdit\" method=\"get\" action=\"/doc\">" +
+                "<input type=\"hidden\" name=\"group\" value=\"" + grp + "\"/>" +
+                "<div id=\"titleDiv\">" +
+                "<input type=\"text\" id=\"TitleText\" readonly name=\"wobj\" value=\"" + newWobj + "\"/>" +
+                "</div>" +
+                "<div id=\"contentDiv\">" +
+                "<p id=\"contentText\">Sample Content</p>" +
+                "</div>" +
+                "<button type=\"submit\" class=\"buttonDark\" id=\"viewButton\" name=\"action\" value=\"view\">View</button>" +
+                "<button type=\"submit\" class=\"buttonDark\" id=\"editButton\" name=\"action\" value=\"edit\">Edit</button>" +
+                "</form>" +
                 "</span>";
             $("body").append(workItem);
         }
@@ -38,6 +38,15 @@
             <br>
             <input type="submit" value="Submit"/>
         </form>
+    </div>
+</div>
+<div id="addWobjModal" class="modal">
+    <div class="modal-content">
+        Work Object Title
+        <br>
+        <input id="newWobj" type="text" name="newGroup" value=""/>
+        <br>
+        <button id="submitWobj" onclick="$.post('/index?group=' + $('#selectedGrp').text() + '&title=' + encodeURIComponent($('#newWobj').val().toString()), appendWorkItem($('#newWobj').val()));$('#addWobjModal').hide();">Submit</button>
     </div>
 </div>
 <div id="top"></div>
@@ -59,7 +68,7 @@
             <a href="#" class="newGroupButton" onclick="$('#addGroupModal').show();">New Group</a>
         </div>
     </div>
-    <button class="buttonPlus" onclick="$.post('/index?group=' + $('#selectedGrp').text(), appendWorkItem());">+</button>
+    <button class="buttonPlus" id="addWobj" onclick="$('#addWobjModal').show()">+</button>
 </div>
 <%
     for (WorkObject wobj :
@@ -84,7 +93,7 @@
     %>
         <button type="submit" class="buttonDark" id="viewButton" name="action" value="view">View</button>
         <button type="submit" class="buttonDark" id="editButton" name="action" value="edit"
-                <%if(wobj.isLocked()){%>disabled<%}%>>Edit</button>
+                <%if(wobj.isLocked()){%>disabled style="background-color: #666666"<%}%>>Edit</button>
     </form>
 </span>
 <%
